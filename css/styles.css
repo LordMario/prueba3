@@ -1,0 +1,371 @@
+@import "normalize.css";
+
+@font-face {
+    font-family: 'GetSchwifty';
+    src: url('../assets/font/GetSchwifty-Regular.woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* reset rems */
+html{
+    font-size: 62.5%; /* Now 10px = 1rem! */
+    font-size: 10px;
+}
+
+body{
+    position: relative;
+}
+
+.content-main{
+    position: relative;
+    height: 100vh;
+    overflow: hidden;
+    
+}
+
+.fondo{
+    position: absolute;
+    height: 100vh;
+    width: 100vw;
+    scale: 1.1;
+}
+
+.fondo-mobile{
+    display: none;
+}
+
+.content-main > .fondo-inicio2{    
+    position: absolute;    
+    height: 100vh;
+    width: 100vw;
+    opacity: 0.1;
+    z-index: 999;
+    top: 0;
+    
+}
+
+.content-main > .content-img{
+    display: inline-flex;
+    justify-content: center;
+    position: absolute;
+    z-index: 999;
+    top: 80%;
+    width: 100%;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 768px){
+
+    .fondo{
+        display: none;
+    }
+
+    /* .content-main{
+        background-image: url('../assets/Imagenes/Fondo inicioV2.png');
+        background-position: center bottom;
+        background-size: cover;
+    } */
+
+    .fondo-mobile{
+        display: block;
+        scale: 1;
+    }
+
+    .content-main > .content-img img{
+        width: 50%;
+        
+    }
+
+    .content-main > .content-img {
+        top: 83%;
+    }
+
+    .content-img > a{
+        display: flex;
+        position: absolute;
+        justify-content: center;
+        top: 100%;
+    }
+
+}
+
+/* DASHBOARD */
+
+.content-dash{
+    height: 100vh;
+    position: relative;
+    background-color: black;
+}
+
+.fondo-partida{
+    position: absolute;
+    opacity: 0.15;
+    width: 100%;
+    height: 100vh;
+}
+
+.content-partida{
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    grid-template-rows: 1fr;
+    z-index: 999;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+}
+
+.content-partida .fichas, .tablero{
+    display: flex;
+    justify-content: center;
+}
+
+.content-partida .fichas{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 3rem;
+    padding: 5rem 3rem;
+}
+
+.content-partida > .fichas-player1{
+    grid-column: 1/2;
+    grid-row: 1/2;
+    align-self: flex-start;
+    
+}
+
+.content-partida > .fichas-player2{
+    grid-column: 3/4;
+    grid-row: 1/2;
+    align-self: flex-end;
+    flex-direction: row-reverse;
+}
+
+.content-partida > .tablero{
+    grid-column: 2/3;
+    grid-row: 1/2;
+    align-self: center;
+    border: 0.5rem solid rgba(240, 218, 11, 0.18);
+    position: relative;
+}
+
+.piezas-absolute{
+    display: grid;
+    grid-template-columns: repeat(8,1fr);
+    grid-template-rows: repeat(8,1fr);
+    justify-items: center;
+    align-items: center;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.space-blank{
+    grid-column: 1/9;
+    grid-row: 3/7;
+}
+
+/*FICHAS*/
+.pieza{
+    width: 30px;
+    height: 50px;
+}
+
+.pieza-peon{
+    width: 30px;
+    height: 35px;
+}
+
+.content-partida .fichas > .pieza{
+    width: 50px;
+    height: 60px;
+}
+
+.content-dash > .time, .link-btn-replay, btn-replay{
+    position: absolute;
+    cursor: pointer;
+    z-index: 999;
+}
+
+.content-dash .link-btn-replay, .btn-replay{
+    width: 80px;
+    height: 80px;
+    bottom: 2rem;
+    left: 2rem;
+}
+
+.content-dash > .time{
+    font-size: 5rem;
+    font-family: 'GetSchwifty';
+    color: #05CAD2;
+    -webkit-text-stroke: 4px rgba(106, 185, 102, 0.9);
+    top: 2rem;
+    right: 3rem;
+    margin: 0;
+}
+
+/*POPUP*/
+.content-popup{
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.5);
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 99999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.content-popup *{
+    font-family: 'GetSchwifty';
+    font-size: 3.5rem;
+    color: white;
+    margin: 0;
+    text-align: center;
+    text-decoration: none;
+}
+
+.popup{
+    display: flex;
+    width: 45%;
+    height: 70%;
+    border-radius: 50px;
+    background-color: black;
+    position: relative;
+}
+
+.popup > .popup-content{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
+    padding: 0 3rem;
+    z-index: 999;
+}
+
+.popup > .popup-content > .popup-title{
+    font-size: 4.5rem;
+}
+
+.popup > .popup-content > .cont-buttons{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.popup > .fondo-victoria, .fondo-derrota{
+    position: absolute;
+    border-radius: 50px;
+    opacity: 0.20;
+    width: 100%;
+    height: 100%;
+}
+
+
+.winner{
+    display: none;
+}
+
+.loser{
+    display: none;
+}
+
+/* mobile */
+@media screen and (max-width: 768px){
+
+    .content-dash{
+        display: flex;
+        align-items: center;
+    }
+
+    .content-partida{
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto auto;
+        gap: 3rem;
+        padding-top: 4rem;
+        height: auto;
+    }
+
+    .content-partida .fichas{
+        display: grid;
+        grid-template-columns: repeat(8,1fr);
+        grid-template-rows: repeat(2,1fr);
+        gap: 1rem;
+        justify-items: center;
+        padding: 0 2rem;
+    }
+
+    .content-partida > .fichas-player1{
+        grid-column: 1/2;
+        grid-row: 1/2;        
+    }
+    
+    .content-partida > .fichas-player2{
+        grid-column: 1/2;
+        grid-row: 3/4;
+        padding: 0 1rem 0 1rem;
+    }
+    
+    .content-partida > .tablero{
+        grid-column: 1/2;
+        grid-row: 2/3;
+        width: 90%;
+        margin: 0 auto;
+    }
+
+    .content-partida > .tablero .img-tablero{
+        width: 100%;
+        height: 100%;
+    }
+
+    /*FICHAS*/
+    .pieza{
+        width: 20px;
+        height: 30px;
+    }
+
+    .pieza-peon{
+        width: 15px;
+        height: 20px;
+    }
+
+    .content-partida .fichas > .pieza{
+        width: 20px;
+        height: 30px;
+    }
+    
+    .content-dash .link-btn-replay, .btn-replay{
+        width: 30px;
+        height: 30px;
+        top: 2rem;
+        left: 1rem;
+    }
+    
+    .content-dash > .time{
+        font-size: 4rem;
+        -webkit-text-stroke: 2px rgba(106, 185, 102, 0.9);
+        top: 2rem;
+        right: 1rem;
+    }
+
+    /*POPUP*/
+    .content-popup *{
+        font-size: 2.5rem;
+    }
+
+    .popup{
+        width: 75%;
+        height: 40%;
+    }
+
+    .popup > .popup-content > .popup-title{
+        font-size: 3.5rem;
+    }
+}
+
+
